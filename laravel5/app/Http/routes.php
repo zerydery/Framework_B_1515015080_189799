@@ -15,15 +15,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-	Route::get('APR', function(){
-	return 'Hello World';
-});
-	Route::get("pengguna/{pengguna}", function ($pengguna){
-	return "Hallo World dari pengguna $pengguna";
-});
-	Route::get("berita/{berita?}", function ($berita = "Laravel 5"){
-	return "berita $berita belum dibaca";
-});
-		Route::get("kelas_b/framework/{mhs?}", function ($mhs = "Anonim"){
-	return "X X X X X X X SPITZERY X X X X X X X X  $mhs";
-});
+Route::get('Pengguna', 'PenggunaController@awal');
+Route::get('Pengguna/tambah', 'PenggunaController@tambah');
+Route::get('Dosen', 'DosenController@awal');
+Route::get('Dosen/tambah', 'DosenController@tambah');
+Route::get('Mahasiswa', 'MahasiswaController@awal');
+Route::get('Mahasiswa/tambah', 'MahasiswaController@tambah');
+
+Route::get('Ruangan', 'RuanganController@awal');
+Route::get('Ruangan/tambah', 'RuanganController@tambah');
+
+Route::get('Matakuliah', 'MatakuliahController@awal');
+Route::get('Matakuliah/tambah', 'MatakuliahController@tambah');
+
+Route::get('Dosen_matakuliah', 'Dosen_matakuliahController@awal');
+Route::get('Dosen_matakuliah/tambah', 'Dosen_matakuliahController@tambah');
+
+Route::get('Jadwal_matakuliah', 'Jadwal_matakuliahController@awal');
+Route::get('Jadwal_matakuliah/tambah', 'Jadwal_matakuliahController@tambah');
