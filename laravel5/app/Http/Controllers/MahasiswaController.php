@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Mahasiswa;
+use App\Pengguna;
 
 class MahasiswaController extends Controller
 {
@@ -24,5 +25,18 @@ class MahasiswaController extends Controller
     	$mahasiswa->pengguna_id = 3;
     	$mahasiswa->save();
     	return "Data Mahasiswa dengan Nama {$mahasiswa->nama} telah disimpan";
-}
+    }
+    public function mahasiswa()
+    {
+        $mahasiswa = mahasiswa::all();
+        foreach ($mahasiswa as $mhs) {
+        echo "Nama: ".$mhs->nama;
+        echo "<br>";
+        echo "Username: ".$mhs->pengguna->username;
+        echo "<br>";
+        echo "<br>";
+        }
+
+    }
+
 }
