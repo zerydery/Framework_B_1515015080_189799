@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Dosen_matakuliah extends Model
 {
     protected $table = 'Dosen_matakuliah';
+    protected $guarded = ['id'];
     protected $fillable = ['dosen_id','matakuliah_id'];
 
     public function dosen()
@@ -24,5 +25,14 @@ class Dosen_matakuliah extends Model
 	{
 	return $this->HasMany(Jadwal_matakuliah::class);//Berelasi dengan model jadwal_matakuliah
 	}
+
+	public function listDosendanMatakuliah()
+	{
+        $out = [];
+        foreach ($this->all() as $dsnMtk) {
+            $out[$dsnMtk->id] = "{$dsnMtk->dosen->nama} (Matakuliah {$dsnMtk->matakuliah->title})";
+        }
+    return $out;
+}
 }
 

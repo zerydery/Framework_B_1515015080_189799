@@ -8,6 +8,7 @@ class Ruangan extends Model
 {
     protected $table = 'Ruangan';
     protected $fillable = ['title'];
+    
 
     public function jadwal_matakuliah()
     {
