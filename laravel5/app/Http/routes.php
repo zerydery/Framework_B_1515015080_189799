@@ -10,9 +10,38 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('test/{id}',function ($id)
+// {
+// 	return \App\dosen_matakuliah::whereHas('matakuliah',function($q)
+// 	{
+// 		$q->where('keterangan','=',$id);
+
+// 	})->with('matakuliah')->get();
+// });
+use Illuminate\Http\Request;
+
+Route::get('/login','SesiController@form');
+Route::post('/login','SesiController@validasi');
+Route::get('/logout','SesiController@logout');
+Route::get('/','SesiController@index');
+Route::group(['middleware'=>'AutentifikasiUser'],function(){
+
+	Route::get('ujiuji1',function()
+{
+	echo Form::open(['url'=>'ujiuji']).
+		Form::label('Nama').
+		Form::text('nama',null).
+		Form::submit('kirim').
+		Form::close();
 });
+Route::post('ujiuji',function(Request $request){
+	echo "hasil dari Form ".$request->nama;
+	});
+Route::get('ujiHas','RelationshipRebornController@ujiHas');
+Route::get('ujiHas1','RelationshipRebornController@ujiDoesntHave');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('pengguna','PenggunaController@awal');
 Route::get('pengguna/tambah','PenggunaController@tambah');
 Route::get('pengguna/{pengguna}','PenggunaController@lihat');
@@ -68,3 +97,5 @@ Route::get('jadwal_matakuliah/{jadwal_matakuliah}', 'Jadwal_matakuliahController
 Route::get('jadwal_matakuliah/edit/{jadwal_matakuliah}', 'Jadwal_matakuliahController@edit');
 Route::post('jadwal_matakuliah/edit/{jadwal_matakuliah}', 'Jadwal_matakuliahController@update');
 Route::get('jadwal_matakuliah/hapus/{jadwal_matakuliah}', 'Jadwal_matakuliahController@hapus');
+});
+

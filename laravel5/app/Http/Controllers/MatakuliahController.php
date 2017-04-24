@@ -12,7 +12,7 @@ class MatakuliahController extends Controller
 {
     public function awal()
     {
-        return view('matakuliah.awal',['data'=>matakuliah::all()]);
+        return view('matakuliah.awal',['data'=>matakuliah::paginate(3)]);
     }
     public function tambah()
     {
